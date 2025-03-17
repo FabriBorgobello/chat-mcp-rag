@@ -10,8 +10,12 @@ import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 
 export default function ChatPage() {
-  const { messages, input, handleInputChange, handleSubmit, isLoading, error } =
-    useChat();
+  const { messages, input, handleInputChange, handleSubmit, status, error } =
+    useChat({
+      onToolCall: (toolCall) => {
+        console.log("[TOOL CALL]:", toolCall);
+      },
+    });
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   // Auto-scroll to bottom of messages
@@ -94,7 +98,11 @@ export default function ChatPage() {
           }}
         />
 
-        <Button type="submit" size="icon" disabled={isLoading || !input.trim()}>
+        <Button
+          type="submit"
+          size="icon"
+          disabled={status === "streaming" || !input.trim()}
+        >
           <Send className="h-5 w-5" />
           <span className="sr-only">Send</span>
         </Button>
