@@ -8,10 +8,7 @@ const mcps = await createMCPClient({
   transport: {
     type: "stdio",
     command: "npx",
-    args: [
-      "tsx",
-      "/Users/fabricioborgobello/Code/chat-mcp-rag/mcp/src/index.ts",
-    ],
+    args: ["tsx", "/Users/fabricioborgobello/Code/chat-mcp-rag/mcp/index.ts"],
   },
 });
 
