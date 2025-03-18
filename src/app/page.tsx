@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
+import ReactMarkdown from "react-markdown";
 
 export default function ChatPage() {
   const { messages, input, handleInputChange, handleSubmit, status, error } =
@@ -68,7 +69,9 @@ export default function ChatPage() {
                     )}
                   </div>
                   <div className="flex-1 space-y-2">
-                    <div className="prose prose-sm">{message.content}</div>
+                    <div className="prose prose-sm max-w-none dark:prose-invert">
+                      <ReactMarkdown>{message.content}</ReactMarkdown>
+                    </div>
                   </div>
                 </div>
               ))}
