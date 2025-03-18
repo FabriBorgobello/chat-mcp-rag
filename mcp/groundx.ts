@@ -1,3 +1,5 @@
+import dotenv from "dotenv";
+dotenv.config();
 import { GroundXClient } from "groundx";
 
 export const groundX = new GroundXClient({
